@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Administrativo</title>
+
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="Dashboard.css">
+
+    <!-- CSS avaliações + gráfico -->
+    <link rel="stylesheet" href="avaliacoes-grafico.css">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="Sidebar">
+        <div class="Sidebar-header">
+            <h3 class="brand">
+                <span class="material-icons">lunch_dining</span>
+                FIRE BURGE HOUSE
+            </h3>
+            <span class="material-icons">menu</span>
+        </div>
+
+        <div class="Sidebar-menu">
+            <ul>
+                <li>
+                    <a href="Dashboard.html" class="active">
+                        <span class="material-icons">dashboard</span> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="GerenciarPedidos.html">
+                        <span class="material-icons">supervisor_account</span> Pedidos
+                    </a>
+                </li>
+                <li>
+                    <a href="Resultado.html">
+                        <span class="material-icons">bar_chart</span> Relatórios
+                    </a>
+                </li>
+                <li>
+                    <a href="Configuracoes.html">
+                        <span class="material-icons">settings</span> Configurações
+                    </a>
+                </li>
+                <li>
+                    <a href="../Assets/index.html">
+                        <span class="material-icons">home</span> Home
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <!-- Header -->
+        <header>
+            <div class="user-greeting">
+                Olá, Allan Gustavo <strong>(Admin)</strong>
+            </div>
+        </header>
+
+        <!-- Cards -->
+        <section class="dashboard-cards">
+            <div class="card"><h4>Pedidos Hoje</h4><p>150</p></div>
+            <div class="card"><h4>Vendas Semanais</h4><p>R$ 12.500</p></div>
+            <div class="card"><h4>Clientes Ativos</h4><p>320</p></div>
+            <div class="card"><h4>Produtos em Estoque</h4><p>85</p></div>
+        </section>
+
+        <!-- Gráfico -->
+        <section class="dashboard-charts">
+            <h3>Resumo de Vendas (Últimos 7 dias)</h3>
+            <canvas id="salesChart"></canvas>
+        </section>
+
+        <!-- Avaliações -->
+        <section class="customer-reviews">
+            <h3>Avaliações dos Clientes</h3>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <strong>João Silva</strong>
+                    <span class="stars">★★★★★</span>
+                </div>
+                <p>Hambúrguer excelente, entrega rápida e atendimento ótimo!</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <strong>Maria Oliveira</strong>
+                    <span class="stars">★★★★☆</span>
+                </div>
+                <p>Muito bom, só poderia ser um pouco mais rápido.</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <strong>Carlos Souza</strong>
+                    <span class="stars">★★★★★</span>
+                </div>
+                <p>Melhor hamburgueria da cidade 🔥</p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 FIRE BURGE HOUSE. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Script do Gráfico -->
+    <script>
+        const ctx = document.getElementById('salesChart');
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                datasets: [{
+                    label: 'Vendas (R$)',
+                    data: [1200, 1900, 3000, 2500, 4200, 5100, 4800],
+                    borderWidth: 3,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: true }
+                }
+            }
+        });
+    </script>
+    
+    <script src="Dashboard.js"></script>
+
+
+</body>
+</html>
