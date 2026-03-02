@@ -214,8 +214,17 @@ header {
 }
 
 /* ===============================
-   PEDIDOS (ORDERS)
+   PEDIDOS (ORDERS) — MELHORIAS
 ================================ */
+
+/* wrapper para controlar largura profissional */
+.orders-wrapper {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* tabela de pedidos */
 .orders-table {
     width: 100%;
     border-collapse: collapse;
@@ -228,7 +237,7 @@ header {
 
 .orders-table th,
 .orders-table td {
-    padding: 12px 15px;
+    padding: 25px 55px;
     text-align: left;
 }
 
@@ -245,7 +254,10 @@ header {
     background-color: #f4f6f8;
 }
 
-/* Status dos pedidos */
+/* ===============================
+   STATUS DOS PEDIDOS
+================================ */
+
 .status {
     padding: 4px 10px;
     border-radius: 20px;
@@ -269,7 +281,10 @@ header {
     color: #155724;
 }
 
-/* Botões de ação */
+/* ===============================
+   BOTÕES DE AÇÃO
+================================ */
+
 .btn-action {
     border: none;
     padding: 6px 10px;

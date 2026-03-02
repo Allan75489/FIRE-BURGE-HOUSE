@@ -25,22 +25,22 @@
     <nav class="Sidebar-menu">
         <ul>
             <li>
-                <a href="dashboard.html">
+                <a href="Dashboard.html">
                     <span class="material-icons">dashboard</span> Dashboard
                 </a>
             </li>
             <li>
-                <a href="pedidos.html" class="active">
+                <a href="Pedidos.html" class="active">
                     <span class="material-icons">supervisor_account</span> Pedidos
                 </a>
             </li>
             <li>
-                <a href="relatorios.html">
+                <a href="Relatorio.html">
                     <span class="material-icons">bar_chart</span> Relatórios
                 </a>
             </li>
             <li>
-                <a href="configuracoes.html">
+                <a href="Configurações.html">
                     <span class="material-icons">settings</span> Configurações
                 </a>
             </li>
@@ -54,63 +54,120 @@
 </aside>
 
 <!-- Conteúdo -->
-<main class="main-content">
+<section>
+    <table class="orders-table">
+        <thead>
+            <tr>
+                <th>#Pedido</th>
+                <th>Cliente</th>
+                <th>Item</th>
+                <th>Valor</th>
+                <th>Status</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
 
-    <header class="main-header">
-        <h2>Gerenciamento de Pedidos</h2>
-    </header>
+            <tr>
+                <td>#1024</td>
+                <td>João Silva</td>
+                <td>Combo Fire Burger</td>
+                <td>R$ 39,90</td>
+                <td><span class="status pendente">Pendente</span></td>
+                <td>
+                    <button class="btn-action btn-view">Ver</button>
+                    <button class="btn-action btn-delete">Excluir</button>
+                </td>
+            </tr>
 
-    <section>
-        <table class="orders-table">
-            <thead>
-                <tr>
-                    <th>#Pedido</th>
-                    <th>Cliente</th>
-                    <th>Item</th>
-                    <th>Valor</th>
-                    <th>Status</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>#1024</td>
-                    <td>João Silva</td>
-                    <td>Combo Fire Burger</td>
-                    <td>R$ 39,90</td>
-                    <td><span class="status pendente">Pendente</span></td>
-                    <td>
-                        <button class="btn-action btn-view">Ver</button>
-                        <button class="btn-action btn-delete">Excluir</button>
-                    </td>
-                </tr>
+            <tr>
+                <td>#1025</td>
+                <td>Maria Oliveira</td>
+                <td>Duplo Bacon</td>
+                <td>R$ 44,90</td>
+                <td><span class="status preparo">Em preparo</span></td>
+                <td>
+                    <button class="btn-action btn-view">Ver</button>
+                    <button class="btn-action btn-delete">Excluir</button>
+                </td>
+            </tr>
 
-                <tr>
-                    <td>#1025</td>
-                    <td>Maria Oliveira</td>
-                    <td>Duplo Bacon</td>
-                    <td>R$ 44,90</td>
-                    <td><span class="status preparo">Em preparo</span></td>
-                    <td>
-                        <button class="btn-action btn-view">Ver</button>
-                        <button class="btn-action btn-delete">Excluir</button>
-                    </td>
-                </tr>
+            <tr>
+                <td>#1026</td>
+                <td>Carlos Souza</td>
+                <td>Fire Chicken</td>
+                <td>R$ 29,90</td>
+                <td><span class="status entregue">Entregue</span></td>
+                <td>
+                    <button class="btn-action btn-view">Ver</button>
+                    <button class="btn-action btn-delete">Excluir</button>
+                </td>
+            </tr>
 
-                <tr>
-                    <td>#1026</td>
-                    <td>Carlos Souza</td>
-                    <td>Fire Chicken</td>
-                    <td>R$ 29,90</td>
-                    <td><span class="status entregue">Entregue</span></td>
-                    <td>
-                        <button class="btn-action btn-view">Ver</button>
-                        <button class="btn-action btn-delete">Excluir</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
+            <tr>
+                <td>#1027</td>
+                <td>Ana Costa</td>
+                <td>Fire Cheese</td>
+                <td>R$ 34,90</td>
+                <td><span class="status pendente">Pendente</span></td>
+                <td>
+                    <button class="btn-action btn-view">Ver</button>
+                    <button class="btn-action btn-delete">Excluir</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>#1028</td>
+                <td>Roberto Santos</td>
+                <td>Fire Bacon</td>
+                <td>R$ 39,90</td>
+                <td><span class="status preparo">Em preparo</span></td>
+                <td>
+                    <button class="btn-action btn-view">Ver</button>
+                    <button class="btn-action btn-delete">Excluir</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>#1029</td>
+                <td>Juliana Mendes</td>
+                <td>Fire Double</td>
+                <td>R$ 49,90</td>
+                <td><span class="status preparo">Em preparo</span></td>
+                <td>
+                    <button class="btn-action btn-view">Ver</button>
+                    <button class="btn-action btn-delete">Excluir</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>#1030</td>
+                <td>João Pedro</td>
+                <td>Combo Fire Burger</td>
+                <td>R$ 29,90</td>
+                <td><span class="status entregue">Entregue</span></td>
+                <td>
+                    <button class="btn-action btn-view">Ver</button>
+                    <button class="btn-action btn-delete">Excluir</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>#1031</td>
+                <td>Lukas Silva</td>
+                <td>Fire Chicken</td>
+                <td>R$ 29,90</td>
+                <td><span class="status pendente">Pendente</span></td>
+                <td>
+                    <button class="btn-action btn-view">Ver</button>
+                    <button class="btn-action btn-delete">Excluir</button>
+                </td>
+            </tr>
+
+        </tbody>
+        
+    </table>
+</section>
 
 </main>
 
