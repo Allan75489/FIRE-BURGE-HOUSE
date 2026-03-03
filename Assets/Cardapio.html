@@ -1,370 +1,255 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Cardápio - Fire Burge House</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cardápio - Fire Burge House</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #111;
+            color: white;
+        }
+
+        .topo {
+            text-align: center;
+            padding: 30px;
+            background: #000;
+        }
+
+        .container {
+            padding: 30px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .categoria {
+            margin-bottom: 50px;
+        }
+
+        .categoria h2 {
+            margin-bottom: 20px;
+            color: #ff3c00;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #1b1b1b;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.04);
+        }
+
+        .card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 10px;
+            background: #333;
+        }
+
+        .preco {
+            display: block;
+            margin: 8px 0;
+            color: #ff3c00;
+            font-weight: bold;
+        }
+
+        .botao {
+            background: #ff3c00;
+            border: none;
+            padding: 8px 15px;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* 🛒 Carrinho */
+        .carrinho {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 260px;
+            background: #000;
+            border: 2px solid #ff3c00;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+        }
+
+        .carrinho h3 {
+            margin-top: 0;
+            color: #ff3c00;
+        }
+
+        .carrinho ul {
+            max-height: 150px;
+            overflow-y: auto;
+            padding-left: 18px;
+            font-size: 14px;
+        }
+
+        .total {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+    </style>
 </head>
 
-<style>
-    /* ===== RESET ===== */
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #0f0f10;
-  color: #ffffff;
-}
-
-/* ===== TOPO ===== */
-.topo {
-  text-align: center;
-  padding: 40px 20px;
-  background: linear-gradient(180deg, #000 0%, #111 100%);
-  border-bottom: 1px solid #222;
-}
-
-.topo h1 {
-  margin: 0;
-  letter-spacing: 1px;
-}
-
-.topo p {
-  margin-top: 8px;
-  color: #aaa;
-}
-
-/* ===== CONTAINER ===== */
-.container {
-  padding: 40px 20px;
-  max-width: 1200px;
-  margin: auto;
-}
-
-/* ===== CATEGORIAS ===== */
-.categoria {
-  margin-bottom: 60px;
-}
-
-.categoria h2 {
-  margin-bottom: 25px;
-  color: #ff3c00;
-  font-size: 26px;
-}
-
-/* ===== GRID ===== */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 24px;
-}
-
-/* ===== CARD ===== */
-.card {
-  background: #18181a;
-  border-radius: 16px;
-  padding: 16px;
-  text-align: center;
-  transition: all 0.25s ease;
-  border: 1px solid #222;
-  position: relative;
-  overflow: hidden;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  border-color: #ff3c00;
-  box-shadow: 0 10px 25px rgba(255, 60, 0, 0.15);
-}
-
-/* ===== IMAGEM ===== */
-.card img {
-  width: 100%;
-  height: 170px;
-  object-fit: cover;
-  border-radius: 12px;
-  background: #2a2a2a;
-  margin-bottom: 10px;
-}
-
-/* ===== TEXTO ===== */
-.card h3 {
-  margin: 10px 0 6px;
-  font-size: 18px;
-}
-
-.card p {
-  font-size: 14px;
-  color: #bdbdbd;
-  min-height: 38px;
-}
-
-/* ===== PREÇO ===== */
-.preco {
-  display: block;
-  margin: 10px 0 14px;
-  color: #ff3c00;
-  font-weight: bold;
-  font-size: 18px;
-}
-
-/* ===== BOTÃO ===== */
-.botao {
-  background: linear-gradient(135deg, #ff3c00, #ff6a00);
-  border: none;
-  padding: 10px 18px;
-  color: white;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.2s ease;
-}
-
-.botao:hover {
-  transform: scale(1.05);
-  filter: brightness(1.1);
-}
-
-/* ===== RESPONSIVO ===== */
-@media (max-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  }
-
-  .card img {
-    height: 150px;
-  }
-}
-</style>
 <body>
 
-<header class="topo">
-  <h1>🔥 FIRE BURGE HOUSE</h1>
-  <p>Nosso Cardápio</p>
-</header>
+    <header class="topo">
+        <h1>🔥 FIRE BURGE HOUSE</h1>
+        <p>Nosso Cardápio</p>
+    </header>
 
-<main class="container">
+    <main class="container">
 
-  <!-- 🍔 HAMBÚRGUERES -->
-  <section class="categoria">
-    <h2>🍔 Hambúrgueres</h2>
-    <div class="grid">
+        <!-- 🍔 HAMBURGUERES -->
+        <section class="categoria">
+            <h2>🍔 Hambúrgueres</h2>
 
-      <div class="card">
-        <img src="../Assets/img/Hamburge/Clássico da Casa.avif" alt="Clássico da Casa">
-        <h3>Clássico da Casa</h3>
-        <p>Pão brioche e carne 180g.</p>
-        <span class="preco">R$ 24,90</span>
-        <button class="botao">Pedir</button>
-      </div>
+            <div class="grid">
 
-      <div class="card">
-        <img src="../Assets/img/Hamburge/Bacon Supreme.webp" alt="Bacon Supreme">
-        <h3>Bacon Supreme</h3>
-        <p>Bacon crocante e cheddar.</p>
-        <span class="preco">R$ 29,90</span>
-        <button class="botao">Pedir</button>
-      </div>
+                <div class="card">
+                    <img src="../Assets/img/Hamburge/Clássico da Casa.avif" alt="Classico da casa">
+                    <h3>Clássico da Casa</h3>
+                    <span class="preco">R$ 24,90</span>
+                    <button class="botao" onclick="adicionarCarrinho('Clássico da Casa', 24.90)">
+                        Pedir
+                    </button>
+                </div>
 
-      <div class="card">
-        <img src="../Assets/img/Hamburge/Chicken burger.avif" alt="Chicken burger">
-        <h3>Chicken Fire</h3>
-        <p>Frango empanado crocante.</p>
-        <span class="preco">R$ 26,90</span>
-        <button class="botao">Pedir</button>
-      </div>
+                <div class="card">
+                    <img src="../Assets/img/Hamburge/Bacon Supreme.webp" alt="Bacon Supreme">
+                    <h3>Bacon Supreme</h3>
+                    <span class="preco">R$ 29,90</span>
+                    <button class="botao" onclick="adicionarCarrinho('Bacon Supreme', 29.90)">
+                        Pedir
+                    </button>
+                </div>
 
-      <div class="card">
-        <img src ="../Assets/img/Hamburge/Duplo Bacon.jpeg" alt ="Duplo Bacon">
-        <h3> Duplo Bacon</h3>
-        <p>Dois hambúrgueres suculentos, cheddar derretido, bacon crocante, alface, tomate e molho especial no pão brioche.</p>
-        <span class="preco">R$ 44,90</span>
-        <button class="botao">Pedir</button>
-      </div>
+                <div class="card">
+                    <img src="../Assets/img/Hamburge/Duplo Bacon.jpeg" alt="Duplo Bacon">
+                    <h3>Duplo Bacon</h3>
+                    <span class="preco">R$ 34,90</span>
+                    <button class="botao" onclick="adicionarCarrinho('Duplo Bacon', 34.90)">
+                        Pedir
+                    </button>
+                </div>
 
+                <div class="card">
+                    <img src="../Assets/img/Hamburge/Chicken burger.avif" alt="Chicken burger">
+                    <h3>Chicken Burger</h3>
+                    <span class="preco">R$ 27,90</span>
+                    <button class="botao" onclick="adicionarCarrinho('Chicken Burger', 27.90)">
+                        Pedir
+                    </button>
+                </div>"
+
+            </div>
+        </section>
+
+        <!-- 🍟 BATATAS -->
+        <section class="categoria">
+            <h2>🍟 Batatas</h2>
+
+            <div class="grid">
+
+                <div class="card">
+                    <img src="../Assets/img/Batata Frita/Batata Tradicional.jpg" alt="Batata Tradicional">
+                    <h3>Batata Tradicional</h3>
+                    <span class="preco">R$ 14,90</span>
+                    <button class="botao" onclick="adicionarCarrinho('Batata Tradicional', 14.90)">
+                        Pedir
+                    </button>
+                </div>
+
+                <div class="card">
+                    <img src="../Assets/img/Batata Frita/Batata Rustica.jpg" alt="Batata Rustica">
+                    <h3>Batata Rustica</h3>
+                    <span class="preco">R$ 16,90</span>
+                    <button class="botao" onclick="adicionarCarrinho('Batata Rustica', 16.90)">
+                        Pedir
+                    </button>
+                </div>
+
+                <div class="card">
+                    <img src="../Assets/img/Batata Frita/Batata Smile.jpg" alt="Batata Smile">
+                    <h3>Batata Smile</h3>
+                    <span class="preco">R$ 18,90</span>
+                    <button class="botao" onclick="adicionarCarrinho('Batata Smile', 18.90)">
+                        Pedir
+                    </button>
+                </div>
+
+                <div class="card">
+                    <img src="../Assets/img/Batata Frita/Batata Cheddar.jpg" alt="Batata Cheddar">
+                    <h3>Batata Cheddar</h3>
+                    <span class="preco">R$ 19,90</span>
+                    <button class="botao" onclick="adicionarCarrinho('Batata Cheddar', 19.90)">
+                        Pedir
+                    </button>
+                </div>
+                
+                    </div>
+                </section>
+
+    </main>
+
+    <!-- 🛒 CARRINHO -->
+    <div id="carrinho" class="carrinho">
+        <h3>🛒 Seu Pedido</h3>
+        <ul id="lista-carrinho"></ul>
+        <p class="total">Total: R$ <span id="total">0.00</span></p>
+        <button onclick="limparCarrinho()" class="botao">Limpar</button>
     </div>
-  </section>
 
-  <!-- 🍟 BATATAS -->
-  <section class="categoria">
-    <h2>🍟 Batatas</h2>
-    <div class="grid">
+    <!-- 🔥 JAVASCRIPT DO CARRINHO -->
+    <script>
+        let carrinho = [];
+        let total = 0;
 
-      <div class="card">
-        <img src="../Assets/img/Batata Frita/Batata Tradicional.jpg" alt="Batata Tradicional">
-        <h3>Batata Tradicional</h3>
-        <p>Porção crocante.</p>
-        <span class="preco">R$ 14,90</span>
-        <button class="botao">Pedir</button>
-      </div>
+        function adicionarCarrinho(nome, preco) {
+            carrinho.push({ nome, preco: parseFloat(preco) });
+            total += parseFloat(preco);
+            atualizarCarrinho();
+        }
 
-      <div class="card">
-        <img src="../Assets/img/Batata Frita/Batata Cheddar.jpg" alt="Batata Cheddar">
-        <h3>Batata Cheddar</h3>
-        <p>Com cheddar cremoso.</p>
-        <span class="preco">R$ 18,90</span>
-        <button class="botao">Pedir</button>
-      </div>
+        function atualizarCarrinho() {
+            const lista = document.getElementById("lista-carrinho");
+            const totalSpan = document.getElementById("total");
 
-      <div class="card">
-        <img src="../Assets/img/Batata Frita/Batata Smile.jpg" alt="Batata Smile">
-        <h3>Batata Smile</h3>
-        <p>Com molho especial.</p>
-        <span class="preco">R$ 16,90</span>
-        <button class="botao">Pedir</button>
-      </div>
+            lista.innerHTML = "";
 
-      <div class="card">
-        <img src="../Assets/img/Batata Frita/Batata Rustica.jpg" alt="Batata Rustica">
-        <h3>Batata Rustica</h3>
-        <p>Com molho especial e queijo derretido.</p>
-        <span class="preco">R$ 17,90</span>
-        <button class="botao">Pedir</button>
-      </div>
+            carrinho.forEach(item => {
+                lista.innerHTML += `<li>${item.nome} — R$ ${item.preco.toFixed(2)}</li>`;
+            });
 
-    </div>
-  </section>
+            totalSpan.textContent = total.toFixed(2);
+        }
 
-  <!-- 🥤 BEBIDAS -->
-  <section class="categoria">
-    <h2>🥤 Bebidas</h2>
-    <div class="grid">
-
-      <div class="card">
-        <img src="../Assets/img/Bebida/Coca-Cola Lata 350.webp" alt="Coca-Cola Lata">
-        <h3>Coca-Cola Lata</h3>
-        <p>350ml gelada.</p>
-        <span class="preco">R$ 6,00</span>
-        <button class="botao">Pedir</button>
-      </div>
-
-      <div class="card">
-        <img src="../Assets/img/Bebida/Guaraná Lata 350ml.webp" alt="Guaraná Lata">
-        <h3>Guaraná Lata</h3>
-        <p>350ml gelado.</p>
-        <span class="preco">R$ 6,00</span>
-        <button class="botao">Pedir</button>
-      </div>
-
-      <div class="card">
-        <img src="../Assets/img/Bebida/Fanta Laranja 350ml.webp" alt="Fanta Laranja">
-        <h3>Fanta Laranja</h3>
-        <p>350ml gelada.</p>
-        <span class="preco">R$ 6,00</span>
-        <button class="botao">Pedir</button>
-      </div>
-
-      <div class="card">
-        <img src="../Assets/img/Bebida/Sprite 350ml.jpg" alt="Sprite 350ml">
-        <h3>Sprite</h3>
-        <p>350ml gelada.</p>
-        <span class="preco">R$ 6,00</span>
-        <button class="botao">Pedir</button>
-      </div>
-
-      <div class="card">
-        <img src ="../Assets/img/Bebida/Agua 500ml.webp" alt="Agua 500ml">
-        <h3>Água 500ml</h3>
-        <p>500ml natural.</p>
-        <span class="preco">R$ 4,00</span>
-        <button class="botao">Pedir</button>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 🍦 SOBREMESAS -->
-  <section class="categoria">
-    <h2>🍦 Sobremesas</h2>
-    <div class="grid">
-
-      <div class="card">
-        <img src="../Assets/img/Sobremesa/Milk shake Oreo.webp" alt="Milk-shake Oreo">
-        <h3>Milk-shake</h3>
-        <p>Cremoso e gelado.</p>
-        <span class="preco">R$ 15,90</span>
-        <button class="botao">Pedir</button>
-      </div>
-
-      <div class="card">
-        <img src ="../Assets/img/Sobremesa/Milk shake Chocolate.webp" alt="Milk-shake Chocolate">
-        <h3>Milk-shake Chocolate</h3>
-        <p>Cremoso e gelado.</p>
-        <span class="preco">R$ 15,90</span>
-        <button class="botao">Pedir</button>
-      </div>
-
-      <div class="card">
-        <img src ="../Assets/img/Sobremesa/Milk shake ovomaltine.jfif" alt="Milk-shake Ovomaltine">
-        <h3>Milk-shake Ovomaltine</h3>
-        <p>Cremoso e gelado.</p>
-        <span class="preco">R$ 15,90</span>
-        <button class="botao">Pedir</button>
-      </div>
-    </div>
-  </section>
-
-</main>
-<script>
-    function criarCard(nome, descricao, preco, imagem) {
-  return `
-    <div class="card">
-      <img src="${imagem}" alt="${nome}">
-      <h3>${nome}</h3>
-      <p>${descricao}</p>
-      <span class="preco">R$ ${preco}</span>
-      <button class="botao">Pedir</button>
-    </div>
-  `;
-}
-
-// 🍔 HAMBÚRGUERES
-const hamburgueres = [
-  ["Clássico da Casa", "Pão brioche e carne 180g.", "24,90", "../img/produtos/hamburguer/burguer1.jpg"],
-  ["Bacon Supreme", "Bacon crocante e cheddar.", "29,90", "../img/produtos/hamburguer/burguer2.jpg"],
-  ["Duplo Fire", "Duas carnes suculentas.", "34,90", "../img/produtos/hamburguer/burguer3.jpg"],
-  ["Smash Fire", "Blend smash e molho especial.", "27,90", "../img/produtos/hamburguer/burguer4.jpg"],
-  ["Chicken Fire", "Frango empanado crocante.", "26,90", "../img/produtos/hamburguer/burguer5.jpg"],
-  ["Especial da Casa", "Receita exclusiva.", "31,90", "../img/produtos/hamburguer/burguer6.jpg"],
-];
-
-// 🍟 BATATAS
-const batatas = [
-  ["Batata Tradicional", "Porção crocante.", "14,90", "../img/produtos/batatas/batata1.jpg"],
-  ["Batata Cheddar", "Com cheddar cremoso.", "18,90", "../img/produtos/batatas/batata2.jpg"],
-  ["Batata Bacon", "Com bacon crocante.", "21,90", "../img/produtos/batatas/batata3.jpg"],
-];
-
-// 🥤 BEBIDAS
-const bebidas = [
-  ["Coca-Cola Lata", "350ml gelada.", "6,00", "../img/produtos/bebidas/bebida1.jpg"],
-  ["Guaraná Lata", "350ml gelado.", "6,00", "../img/produtos/bebidas/bebida2.jpg"],
-  ["Fanta Lata", "350ml gelada.", "6,00", "../img/produtos/bebidas/bebida3.jpg"],
-  ["Água Mineral", "500ml.", "4,00", "../img/produtos/bebidas/bebida4.jpg"],
-];
-
-// 🍦 SOBREMESAS
-const sobremesas = [
-  ["Milk-shake", "Cremoso e gelado.", "15,90", "../img/produtos/sobremesas/sobremesa1.jpg"],
-  ["Sorvete", "2 bolas.", "9,90", "../img/produtos/sobremesas/sobremesa2.jpg"],
-];
-
-// 🔥 FUNÇÃO PARA RENDERIZAR
-function renderizar(lista, elementoId) {
-  const container = document.getElementById(elementoId);
-  lista.forEach(item => {
-    container.innerHTML += criarCard(...item);
-  });
-}
-
-// 🚀 RENDER
-renderizar(hamburgueres, "lista-hamburgueres");
-renderizar(batatas, "lista-batatas");
-renderizar(bebidas, "lista-bebidas");
-renderizar(sobremesas, "lista-sobremesas");
-</script>
+        function limparCarrinho() {
+            carrinho = [];
+            total = 0;
+            atualizarCarrinho();
+        }
+    </script>
 
 </body>
+
 </html>
