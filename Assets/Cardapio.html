@@ -205,10 +205,92 @@
                         Pedir
                     </button>
                 </div>
-                
-                    </div>
-                </section>
 
+            </div>
+        </section>
+
+        <!-- 🥤 BEBIDAS -->
+
+        <section class="categoria">
+            <h2>🥤 Bebidas</h2>
+
+            <div class="grid">
+
+                <div class="card">
+                    <img src="../Assets/img/Bebida/Fanta Laranja 350ml.webp" alt="Fanta Laranja 350ml">
+                    <h3>Fanta Laranja</h3>
+                    <span class="preco">R$ 6,00</span>
+                    <button class="botao" onclick="adicionarCarrinho('Fanta Laranja', 6.00)">
+                        Pedir
+                    </button>
+                </div>
+
+                <div class="card">
+                    <img src="../Assets/img/Bebida/Guaraná Lata 350ml.webp" alt="Guaraná Antártica Lata 350ml">
+                    <h3>Guaraná Antártica</h3>
+                    <span class="preco">R$ 6,00</span>
+                    <button class="botao" onclick="adicionarCarrinho('Guaraná Antártica', 6.00)">
+                        Pedir
+                    </button>
+                </div>
+
+                <div class="card">
+                    <img src="../Assets/img/Bebida/Agua 500ml.webp" alt="Água Mineral">
+                    <h3>Água Mineral</h3>
+                    <span class="preco">R$ 4,00</span>
+                    <button class="botao" onclick="adicionarCarrinho('Água Mineral', 4.00)">
+                        Pedir
+                    </button>
+                </div>
+
+                <div class="card">
+                    <img src="../Assets/img/Bebida/Coca-Cola Lata 350.webp" alt="Coca-Cola Lata 350ml">
+                    <h3>Coca-Cola Lata 350ml</h3>
+                    <span class="preco">R$ 6,49</span>
+                    <button class="botao" onclick="adicionarCarrinho('Coca-Cola Lata 350ml', 6.49)">
+                        Pedir
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!--🍨 SOBREMESAS -->
+
+        <section class="categoria">
+            <h2>🍨 Sobremesas</h2>
+
+            <div class="grid">
+
+                <div class="card">
+                    <img src="../Assets/img/Sobremesa/Milk shake Chocolate.webp" alt="Milk Shake Chocolate">
+                    <h3>Milk Shake Chocolate</h3>
+                    <span class="preco">R$ 9,90</span>
+                    <button class="botao" onclick="adicionarCarrinho('Milk Shake Chocolate', 9.90)">
+                        Pedir
+                    </button>
+                </div>
+
+                <div class="card">
+                    <img src="../Assets/img/Sobremesa/Milk shake ovomaltine.jfif" alt="Milk Shake Ovomaltine">
+                    <h3>Milk Shake Ovomaltine</h3>
+                    <span class="preco">R$ 15,90</span>
+                    <button class="botao" onclick="adicionarCarrinho('Milk Shake Ovomaltine', 15.90)">
+                        Pedir
+                    </button>
+                </div>
+
+                <div class="card">
+                    <img src="../Assets/img/Sobremesa/Milk shake Oreo.webp" alt="milk shake Oreo">
+                    <h3>Milk Shake Oreo</h3>
+                    <span class="preco">R$ 16,90</span>
+                    <button class="botao" onclick="adicionarCarrinho('Milk Shake Oreo', 16.90)">
+                        Pedir
+                    </button>
+                </div>
+
+            </div>
+        </section>
     </main>
 
     <!-- 🛒 CARRINHO -->
@@ -217,36 +299,104 @@
         <ul id="lista-carrinho"></ul>
         <p class="total">Total: R$ <span id="total">0.00</span></p>
         <button onclick="limparCarrinho()" class="botao">Limpar</button>
+        <button onclick="finalizarWhatsApp()" class="botao" style="width:100%; margin-top:8px;">
+            Finalizar Pedido
+        </button>
     </div>
-
-    <!-- 🔥 JAVASCRIPT DO CARRINHO -->
+    <!-- 🔥 JAVASCRIPT DO CARRINHO COM QUANTIDADE -->
     <script>
         let carrinho = [];
         let total = 0;
 
+        // adicionar produto
         function adicionarCarrinho(nome, preco) {
-            carrinho.push({ nome, preco: parseFloat(preco) });
-            total += parseFloat(preco);
+            const precoNumero = parseFloat(preco);
+
+            // procura se já existe
+            const itemExistente = carrinho.find(item => item.nome === nome);
+
+            if (itemExistente) {
+                itemExistente.quantidade++;
+            } else {
+                carrinho.push({
+                    nome: nome,
+                    preco: precoNumero,
+                    quantidade: 1
+                });
+            }
+
+            total += precoNumero;
             atualizarCarrinho();
         }
 
+        // atualizar carrinho
         function atualizarCarrinho() {
             const lista = document.getElementById("lista-carrinho");
             const totalSpan = document.getElementById("total");
 
             lista.innerHTML = "";
 
-            carrinho.forEach(item => {
-                lista.innerHTML += `<li>${item.nome} — R$ ${item.preco.toFixed(2)}</li>`;
+            carrinho.forEach((item, index) => {
+                lista.innerHTML += `
+      <li style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+        <span>
+          ${item.nome} x${item.quantidade} — 
+          R$ ${(item.preco * item.quantidade).toFixed(2)}
+        </span>
+
+        <button onclick="removerItem(${index})"
+                style="background:#ff3c00;border:none;color:white;border-radius:6px;padding:2px 6px;cursor:pointer;">
+          ❌
+        </button>
+      </li>
+    `;
             });
 
             totalSpan.textContent = total.toFixed(2);
         }
 
+        // remover item
+        function removerItem(index) {
+            const item = carrinho[index];
+
+            total -= item.preco;
+
+            if (item.quantidade > 1) {
+                item.quantidade--;
+            } else {
+                carrinho.splice(index, 1);
+            }
+
+            atualizarCarrinho();
+        }
+
+        // limpar carrinho
         function limparCarrinho() {
             carrinho = [];
             total = 0;
             atualizarCarrinho();
+        }
+
+        function finalizarWhatsApp() {
+            if (carrinho.length === 0) {
+                alert("Seu carrinho está vazio!");
+                return;
+            }
+
+            let mensagem = "🍔 *Pedido - Fire Burge House*%0A%0A";
+
+            carrinho.forEach(item => {
+                mensagem += `• ${item.nome} x${item.quantidade} — R$ ${(item.preco * item.quantidade).toFixed(2)}%0A`;
+            });
+
+            mensagem += `%0A💰 *Total: R$ ${total.toFixed(2)}*`;
+
+            // ⚠️ TROQUE PELO SEU NÚMERO
+            const telefone = "(83) 99199-8747";
+
+            const url = `https://web.whatsapp.com/${telefone}?text=${mensagem}`;
+
+            window.open(url, "_blank");
         }
     </script>
 
