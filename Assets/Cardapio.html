@@ -7,79 +7,33 @@
     <title>Cardápio - Fire Burge House</title>
 
     <style>
-        body {
+        /* RESET */
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* BODY */
+        body {
             font-family: Arial, Helvetica, sans-serif;
             background: #111;
             color: white;
         }
 
+        /* TOPO */
         .topo {
             text-align: center;
-            padding: 30px;
+            padding: 40px 20px;
             background: #000;
         }
 
-        .container {
-            padding: 30px;
-            max-width: 1200px;
-            margin: auto;
+        .topo h1 {
+            font-size: 32px;
+            letter-spacing: 2px;
         }
 
-        .categoria {
-            margin-bottom: 50px;
-        }
-
-        .categoria h2 {
-            margin-bottom: 20px;
-            color: #ff3c00;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: #1b1b1b;
-            border-radius: 12px;
-            padding: 15px;
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: scale(1.04);
-        }
-
-        .card img {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-            border-radius: 10px;
-            background: #333;
-        }
-
-        .preco {
-            display: block;
-            margin: 8px 0;
-            color: #ff3c00;
-            font-weight: bold;
-        }
-
-        .botao {
-            background: #ff3c00;
-            border: none;
-            padding: 8px 15px;
-            color: white;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        /* HOME*/
-
+        /* BARRA SUPERIOR */
         .top-bar {
             display: flex;
             gap: 15px;
@@ -87,6 +41,7 @@
             background: #111;
         }
 
+        /* BOTÕES */
         .btn-nova-promocao {
             background: #e60000;
             color: white;
@@ -94,6 +49,11 @@
             border-radius: 10px;
             text-decoration: none;
             font-weight: bold;
+            transition: .3s;
+        }
+
+        .btn-nova-promocao:hover {
+            background: #b80000;
         }
 
         .btn-home {
@@ -105,17 +65,99 @@
             font-weight: bold;
         }
 
-        /* 🛒 Carrinho */
+        /* CONTAINER */
+        .container {
+            padding: 30px;
+            max-width: 1200px;
+            margin: auto;
+            padding-right: 320px;
+            /* espaço pro carrinho */
+        }
+
+        /* CATEGORIAS */
+        .categoria {
+            margin-bottom: 60px;
+        }
+
+        .categoria h2 {
+            margin-bottom: 25px;
+            color: #ff3c00;
+            font-size: 24px;
+        }
+
+        /* GRID DE PRODUTOS */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        /* CARD */
+        .card {
+            background: #1b1b1b;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            transition: .3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        /* IMAGEM */
+        .card img {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+            border-radius: 10px;
+            background: #333;
+        }
+
+        /* TITULO */
+        .card h3 {
+            margin-top: 10px;
+        }
+
+        /* PREÇO */
+        .preco {
+            display: block;
+            margin: 10px 0;
+            color: #ff3c00;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* BOTÃO PEDIR */
+        .botao {
+            background: #ff3c00;
+            border: none;
+            padding: 10px;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .botao:hover {
+            background: #ff5c2a;
+        }
+
+        /* CARRINHO */
         .carrinho {
             position: fixed;
-            right: 20px;
-            bottom: 20px;
+            right: 30px;
+            top: 200px;
             width: 260px;
             background: #000;
             border: 2px solid #ff3c00;
             border-radius: 12px;
             padding: 15px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 0 10px rgba(0, 0, 0, .6);
         }
 
         .carrinho h3 {
@@ -123,31 +165,39 @@
             color: #ff3c00;
         }
 
+        /* LISTA DO CARRINHO */
         .carrinho ul {
-            max-height: 150px;
+            max-height: 160px;
             overflow-y: auto;
             padding-left: 18px;
             font-size: 14px;
         }
 
+        /* TOTAL */
         .total {
             font-weight: bold;
             margin: 10px 0;
         }
 
-        .btn-nova-promocao {
-            background: red;
-            color: white;
-            padding: 12px 20px;
+        /* BOTÕES DO CARRINHO */
+        .carrinho button {
+            width: 100%;
+            margin-top: 5px;
+            padding: 8px;
+            border: none;
             border-radius: 8px;
-            text-decoration: none;
-            margin-bottom: 30px;
-            display: inline-block;
             font-weight: bold;
+            cursor: pointer;
         }
 
-        .btn-nova-promocao:hover {
-            background: #b80000;
+        .btn-limpar {
+            background: #ff3c00;
+            color: white;
+        }
+
+        .btn-finalizar {
+            background: #ff6a00;
+            color: white;
         }
     </style>
 </head>
