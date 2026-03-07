@@ -78,6 +78,33 @@
             font-weight: bold;
         }
 
+        /* HOME*/
+
+        .top-bar {
+            display: flex;
+            gap: 15px;
+            padding: 20px;
+            background: #111;
+        }
+
+        .btn-nova-promocao {
+            background: #e60000;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn-home {
+            background: #ff4d00;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
         /* 🛒 Carrinho */
         .carrinho {
             position: fixed;
@@ -126,11 +153,17 @@
 </head>
 
 <body>
+    <div class="top-bar">
 
-    <a href="promocoes.html" onclick="adicionarCard()" class="btn-nova-promocao">
-        ➕ Promoções da Semana
-    </a>
+        <a href="promocoes.html" onclick="adicionarCard()" class="btn-nova-promocao">
+            ➕ Promoções da Semana
+        </a>
 
+        <a href="Home.html" class="btn-home">
+            🏠 Home
+        </a>
+
+    </div>
     <header class="topo">
         <h1>🔥 FIRE BURGE HOUSE</h1>
         <p>Nosso Cardápio</p>
