@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 🔥 Fire Burge House
 
 Sistema web de **cardápio digital para hamburgueria**, desenvolvido para permitir que clientes visualizem produtos, adicionem itens ao carrinho e realizem pedidos de forma simples.
