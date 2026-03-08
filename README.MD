@@ -28,33 +28,22 @@ O projeto simula o funcionamento de um **cardápio online moderno**, com interfa
 
 # Estrutura do Projeto
 
-📦 Fire Burger House
-├── 📁 Admin/ # Painel administrativo
-│   ├── 📄 Login.html # Página de login do administrador
-│   ├── 📄 Dashboard.html # Dashboard principal
-│   ├── 📄 Pedidos.html # Página de visualização de pedidos
-│   └── 📄 Relatorio.html # Página de relatórios de vendas
+📦 FIRE BURGER HOUSE
+├── 📁 Admin
+│   ├── 📄 Login.html
+│   ├── 📄 Dashboard.html
+│   ├── 📄 Pedidos.html
+│   └── 📄 Relatorio.html
 │
-├── 📁 Assets/ # Recursos estáticos
-│   ├── 📁 img/ # Imagens do sistema
-│   │   ├── 📁 hamburguers/ # Imagens dos hambúrgueres
-│   │   ├── 📁 bebidas/ # Imagens de bebidas
-│   │   └── 📁 promocoes/ # Imagens de promoções
-│   ├── 📁 css/ # Estilos globais
-│   │   ├── 📄 Home.css # Estilo da página inicial
-│   │   ├── 📄 Cardapio.css # Estilo da página de cardápio
-│   │   └── 📄 Promocoes.css # Estilo da página de promoções
-│   └── 📁 js/ # Scripts globais
-│       ├── 📄 Home.js # Scripts da página inicial
-│       ├── 📄 Cardapio.js # Scripts do cardápio
-│       └── 📄 Carrinho.js # Lógica do carrinho de compras
+├── 📁 Assets
+│   └── 📁 img
 │
-├── 📁 Pages/ # Páginas do cliente
-│   ├── 📄 Home.html # Página inicial
-│   ├── 📄 Cardapio.html # Página de listagem de produtos
-│   └── 📄 Promocoes.html # Página de promoções da semana
-│
-├── 📄 README.md # Documentação do projeto
+├── 📄 Cardapio.html
+├── 📄 Home.html
+├── 📄 Promocoes.html
+├── 📄 Home.css
+└── 📄 Home.js
+
 ---
 
 # 🛠️ Painel Administrativo
