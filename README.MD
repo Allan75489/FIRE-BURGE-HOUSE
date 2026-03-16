@@ -28,6 +28,7 @@ O projeto simula o funcionamento de um **cardápio online moderno**, com interfa
 
 # 📂 Estrutura do Projeto
 
+```
 📦 FIRE BURGER HOUSE
 │
 ├── 📁 Admin
@@ -44,6 +45,7 @@ O projeto simula o funcionamento de um **cardápio online moderno**, com interfa
 ├── 📄 Promocoes.html
 ├── 📄 Home.css
 └── 📄 Home.js
+```
 
 ---
 
