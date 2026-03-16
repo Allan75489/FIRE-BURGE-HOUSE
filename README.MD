@@ -26,7 +26,19 @@ O projeto simula o funcionamento de um **cardápio online moderno**, com interfa
 
 ---
 
+<<<<<<< HEAD
 📦 Fire-Burger-House
+=======
+# Estrutura do Projeto
+
+📦 FIRE BURGER HOUSE
+│
+├── 📁 Admin
+│   ├── 📄 Login.html
+│   ├── 📄 Dashboard.html
+│   ├── 📄 Pedidos.html
+│   └── 📄 Relatorio.html
+>>>>>>> c46d89d4b9faf306776cc8219d8983286a65f97c
 │
 ├── 📄 index.html
 │
