@@ -26,23 +26,25 @@ O projeto simula o funcionamento de um **cardápio online moderno**, com interfa
 
 ---
 
-# Estrutura do Projeto
-
-📦 FIRE BURGER HOUSE
-├── 📁 Admin
-│   ├── 📄 Login.html
-│   ├── 📄 Dashboard.html
-│   ├── 📄 Pedidos.html
-│   └── 📄 Relatorio.html
+📦 Fire-Burger-House
 │
-├── 📁 Assets
-│   └── 📁 img
+├── 📄 index.html
 │
-├── 📄 Cardapio.html
-├── 📄 Home.html
-├── 📄 Promocoes.html
-├── 📄 Home.css
-└── 📄 Home.js
+├── 📁 pages
+│   ├── 📄 cardapio.html
+│   ├── 📄 promocoes.html
+│   └── 📄 carrinho.html
+│
+├── 📁 css
+│   └── 📄 style.css
+│
+├── 📁 js
+│   └── 📄 script.js
+│
+├── 📁 images
+│   └── (imagens dos hambúrgueres)
+│
+└── 📄 README.md
 
 ---
 
